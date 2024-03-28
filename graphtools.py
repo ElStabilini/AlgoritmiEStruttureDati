@@ -4,6 +4,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 from tqdm import tqdm
 
+import metis
+
+
 def euclidean_distance(a, b):
     return np.linalg.norm(np.array(a) - np.array(b))
 
@@ -71,4 +74,3 @@ def bisection_weights(graph, cluster):
     edges = min_cut_bisector(cluster)
     weights = get_weights(cluster, edges)
     return weights
-
