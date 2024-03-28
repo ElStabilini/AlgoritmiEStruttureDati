@@ -4,8 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from tqdm import tqdm
 
-import metis
-
+import metis #export METIS_DLL=/usr/local/lib/libmetis.so
 
 def euclidean_distance(a, b):
     return np.linalg.norm(np.array(a) - np.array(b))
@@ -32,7 +31,6 @@ def knn_graph(df, k, verbose=False):
     g.graph['edge_weight_attr'] = 'similarity'
     return g
 
-#the part_graph code is still to modify because I need it to run with networkx instead of metis
 def part_graph(graph, k, df=None):
     edgecuts, parts = metis.part_graph(
         graph, 2, objtype='cut', ufactor=250)
@@ -74,3 +72,4 @@ def bisection_weights(graph, cluster):
     edges = min_cut_bisector(cluster)
     weights = get_weights(cluster, edges)
     return weights
+
