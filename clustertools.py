@@ -1,6 +1,9 @@
 import numpy as np
 from scipy.special import comb
 
+
+'''This file is only needed to compute validation index for clusters, it is not related to chameleon algorithm'''
+
 def external_index(v1, v2):
     TP, FN, FP, TN = confusion_index(v1, v2)
     RI = (TP + TN) / (TP + FN + FP + TN);
@@ -26,3 +29,4 @@ def contingency(v1, v2):
     for i in range(0, np.size(v1)):
         res[v1[i] - 1, v2[i] - 1] = res[v1[i] - 1, v2[i] - 1] + 1
     return res
+    
