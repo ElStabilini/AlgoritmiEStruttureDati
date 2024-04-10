@@ -6,10 +6,11 @@ from graphtools import *
 from clustertools import *
 from visualization import *
 
+# compute internal_intercconnectivity
 def internal_interconnectivity(graph, cluster):
     return np.sum(bisection_weights(graph, cluster))
 
-
+#compute relatibe interconnectivity
 def relative_interconnectivity(graph, cluster_i, cluster_j):
     edges = connecting_edges((cluster_i, cluster_j), graph)
     EC = np.sum(get_weights(graph, edges))
@@ -17,14 +18,14 @@ def relative_interconnectivity(graph, cluster_i, cluster_j):
         graph, cluster_i), internal_interconnectivity(graph, cluster_j)
     return EC / ((ECci + ECcj) / 2.0)
 
-
+#compute internal closness
 def internal_closeness(graph, cluster):
     cluster = graph.subgraph(cluster)
     edges = cluster.edges()
     weights = get_weights(cluster, edges)
     return np.sum(weights)
 
-
+#compute relative closness
 def relative_closeness(graph, cluster_i, cluster_j):
     edges = connecting_edges((cluster_i, cluster_j), graph)
     if not edges:
@@ -79,6 +80,12 @@ def merge_best(graph, df, a, k, verbose=False):
                 graph.node[p]['cluster'] = ci
     return max_score > 0
 
+''''
+    BUILDING CLUSTER
+
+    input:
+    output: dataframe with cluster labels
+'''
 
 def cluster(df, k, knn=10, m=30, alpha=2.0, verbose=False, plot=False):
     graph = knn_graph(df, knn, verbose=True)
@@ -90,6 +97,17 @@ def cluster(df, k, knn=10, m=30, alpha=2.0, verbose=False, plot=False):
             plot2d_data(df)
     res = rebuild_labels(df)
     return res
+
+'''
+    REBUILDING LABELS OF THE DATA FRAME:
+
+    input: dataframe
+    1. builds a copy of the dataframe
+    2. retrieves the unique values in the 'cluster' column of the DataFrame df. 
+        It counts the occurrences of each cluster label using value_counts() function from pandas, then extracts the index of the resulting DataFrame, which represents the unique cluster labels
+    3. Iterates over each unique cluster and assign the current value of c to all the elements of the original cluster
+    output: copy of the dataframe with the new labels
+'''
 
 def rebuild_labels(df):
     ans = df.copy()
