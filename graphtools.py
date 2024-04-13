@@ -61,7 +61,7 @@ def knn_graph(df, k, verbose=False):
 def part_graph(graph, k, df=None):
     edgecuts, parts = metis.part_graph(
         graph, 2, objtype='cut', ufactor=250)
-    # print(edgecuts)
+    print(edgecuts)
     for i, p in enumerate(graph.nodes()):
         graph.node[p]['cluster'] = parts[i]
     if df is not None:
