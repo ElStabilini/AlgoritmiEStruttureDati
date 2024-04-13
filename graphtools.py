@@ -47,7 +47,7 @@ def knn_graph(df, k, verbose=False):
         for c in closests:
             g.add_edge(i, c, weight=1.0 / distances[c], similarity=int(
                 1.0 / distances[c] * 1e4))
-        g.node[i]['pos'] = p
+        g.nodes[i]['pos'] = p
     g.graph['edge_weight_attr'] = 'similarity'
     return g
 

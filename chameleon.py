@@ -87,9 +87,11 @@ def merge_best(graph, df, a, k, verbose=False):
     output: dataframe with cluster labels
 '''
 
-def cluster(df, k, knn=10, m=30, alpha=2.0, verbose=False, plot=False):
+def cluster(df, k, knn=10, m=30, alpha=2.0, verbose=False, plot=True):
     graph = knn_graph(df, knn, verbose=True)
-    graph = pre_part_graph(graph, m, df, verbose=True)
+    print('built knn graph')
+    graph = part_graph(graph, m, df)
+    print('partitioned graph')
     iterm = tqdm(enumerate(range(m - k)), total=m-k)
     for i in iterm:
         merge_best(graph, df, alpha, k, verbose)

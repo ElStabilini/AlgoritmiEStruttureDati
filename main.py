@@ -9,7 +9,7 @@ if __name__ == "__main__":
                      header=None)
 
     # returns a pands.dataframe of cluster
-    #df_cluster = cluster(df, 7, knn=20, m=40, alpha=2.0, plot=False)
+    df_cluster = cluster(df, 7, knn=20, m=40, alpha=2.0, plot=False)
 
     # draw a 2-D scatter plot with cluster
     #plot2d_data(res)
