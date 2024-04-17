@@ -1,10 +1,16 @@
 import itertools
 import pandas as pd
 import numpy as np
+import tqdm
 
-from graphtools import *
+from graphtools import connecting_edges
+from graphtools import get_weights
+from graphtools import bisection_weights
+from graphtools import get_cluster
+from graphtools import knn_graph
+from graphtools import part_graph
 from clustertools import *
-from visualization import *
+from visualization import plot2d_data
 
 # compute internal_intercconnectivity
 def internal_interconnectivity(graph, cluster):
