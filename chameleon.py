@@ -16,7 +16,7 @@ from visualization import plot2d_data
 def internal_interconnectivity(graph, cluster):
     return np.sum(bisection_weights(graph, cluster))
 
-#compute relatibe interconnectivity
+#compute relative interconnectivity
 def relative_interconnectivity(graph, cluster_i, cluster_j):
     edges = connecting_edges((cluster_i, cluster_j), graph)
     EC = np.sum(get_weights(graph, edges))
