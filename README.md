@@ -7,5 +7,5 @@ L'argomento scelto per l'approfondimento è l'utilizzo della teoria dei grafi ne
 L'implementazione dell'algoritmo è partita da una modifica del codice disponibile a questo [link](https://github.com/Moonpuck/chameleon_cluster/tree/master).
 
 ## Lezioni
-La cartella contiene anche alcune note dalle lezioni tenute durante l'AA 2022-23.
+La cartella contiene anche alcune note dalle lezioni tenute durante l'AA 2022-23. Gli appunti non sono stati revisionati, possono pertanto contenere errori ed inesattezze.
 
